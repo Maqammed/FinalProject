@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Text;
 namespace DataAccess.Abstract
 {
     public interface IProductDal:IEntityRepository<Product> //Repositoru Product ucun isletdin https://youtu.be/ow-EHetuNAU
-    {  
+    {
+        List<ProductDetailDto> GetProductDetails();
     }
 } //Code refactory
