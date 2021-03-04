@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -13,11 +14,11 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryProductDal()
         {
             _products = new List<Product> {
-            new Product {ProducrId = 1,CategoryId=1,ProductName = "Bardak", UnitPrice = 15, UnitsInStock = 15 },
-            new Product {ProducrId = 2,CategoryId=1,ProductName = "Kamera", UnitPrice = 500, UnitsInStock = 3 },
-            new Product {ProducrId = 3,CategoryId=2,ProductName = "Telefon", UnitPrice = 1500, UnitsInStock = 2 },
-            new Product {ProducrId = 4,CategoryId=2,ProductName = "Klavye", UnitPrice = 150, UnitsInStock = 65 },
-            new Product {ProducrId = 5,CategoryId=2,ProductName = "Fare", UnitPrice = 85, UnitsInStock = 1 }
+            new Product {ProductId = 1,CategoryId=1,ProductName = "Bardak", UnitPrice = 15, UnitsInStock = 15 },
+            new Product {ProductId = 2,CategoryId=1,ProductName = "Kamera", UnitPrice = 500, UnitsInStock = 3 },
+            new Product {ProductId = 3,CategoryId=2,ProductName = "Telefon", UnitPrice = 1500, UnitsInStock = 2 },
+            new Product {ProductId = 4,CategoryId=2,ProductName = "Klavye", UnitPrice = 150, UnitsInStock = 65 },
+            new Product {ProductId = 5,CategoryId=2,ProductName = "Fare", UnitPrice = 85, UnitsInStock = 1 }
             };
         }
         public void Add(Product product)
@@ -38,7 +39,7 @@ namespace DataAccess.Concrete.InMemory
 
             //}      ASAGIDA BUNUN BIR SETIRLIK ASAN YOLU. LINQ
 
-            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId == product.ProducrId); //()'in icindekine lambda diyilir
+            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId == product.ProductId); //()'in icindekine lambda diyilir
 
             _products.Remove(productToDelete); //ama SingleOrDefault @ cavab gelmeli yapilarda islemez, bu Cok vaxt Id temalarinda isledilir
         }
@@ -50,7 +51,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Product product)  //productToUpdate == guncellenecek urun
         {  //Gonderdiyim urun id'sine sahip lsitedeki urunu tap
-            Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProducrId);
+            Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
 
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.CategoryId = product.CategoryId;
@@ -62,6 +63,16 @@ namespace DataAccess.Concrete.InMemory
         {
             return _products.Where(p => p.CategoryId == categoryId).ToList();
             //where () icindeki sart uyan butum elemanlari yeni liste halina getirib onu d:ondurur
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

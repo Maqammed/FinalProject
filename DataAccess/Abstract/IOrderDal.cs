@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IProductDal:IEntityRepository<Product> //Repositoru Product ucun isletdin https://youtu.be/ow-EHetuNAU
-    {  
+    public interface IOrderDal:IEntityRepository<Order>
+    {
     }
-} //Code refactory
+}
