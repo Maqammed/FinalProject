@@ -1,61 +1,61 @@
-﻿using Business.Concrete;
-using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
-using System;
+﻿//using Business.Concrete;
+//using DataAccess.Concrete.EntityFramework;
+//using DataAccess.Concrete.InMemory;
+//using System;
 
-namespace ConsoleUI
-{
-    class Program
-    {
-        static void Main(string[] args)
-        { 
-            ProductTest();
-            //CategoryTest();
+//namespace ConsoleUI
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        { 
+//            ProductTest();
+//            //CategoryTest();
 
-        }
+//        }
 
-        private static void CategoryTest()
-        {
-            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach (var cat in categoryManager.GetAll())
-            {
-                Console.WriteLine(cat.CategoryName);
-            }
-        }
+//        private static void CategoryTest()
+//        {
+//            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+//            foreach (var cat in categoryManager.GetAll())
+//            {
+//                Console.WriteLine(cat.CategoryName);
+//            }
+//        }
 
-        private static void ProductTest()
-        {
-            ProductManager productManager = new ProductManager(new EfProductDal());
+//        private static void ProductTest()
+//        {
+//            ProductManager productManager = new ProductManager(new EfProductDal());
 
-            var result = productManager.GetProductDetails();
+//            var result = productManager.GetProductDetails();
 
-            if (result.Success)
-            {
-                foreach (var product in result.Data)
-                {
-                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+//            if (result.Success)
+//            {
+//                foreach (var product in result.Data)
+//                {
+//                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
 
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+//                }
+//            }
+//            else
+//            {
+//                Console.WriteLine(result.Message);
+//            }
+//        }
 
-            /* ProductManager productManager = new ProductManager(new EfProductDal()); //Burani bos qoymaq olmaz, birden cox usul ola bildiyi ucun bu hansi usulla islediyini belitmeni isdeyir
+//            /* ProductManager productManager = new ProductManager(new EfProductDal()); //Burani bos qoymaq olmaz, birden cox usul ola bildiyi ucun bu hansi usulla islediyini belitmeni isdeyir
 
-                  foreach (var product in productManager.GetAll()) //yuxarda basqa veri tabaniyla islemey isdiyirsense : https://youtu.be/qBQOqh844Mo?t=10367
-                  {
-                      Console.WriteLine(product.ProductName); //burda diyirikki urunlerin hepsini listele ama mene adini ver
-                  } */
+//                  foreach (var product in productManager.GetAll()) //yuxarda basqa veri tabaniyla islemey isdiyirsense : https://youtu.be/qBQOqh844Mo?t=10367
+//                  {
+//                      Console.WriteLine(product.ProductName); //burda diyirikki urunlerin hepsini listele ama mene adini ver
+//                  } */
 
-            //ProductManager productManager = new ProductManager(new EfProductDal());
+//            //ProductManager productManager = new ProductManager(new EfProductDal());
 
-            //foreach (var product in productManager.GetAllByCategryId(2))
-            //{
-            //    Console.WriteLine(product.ProductName);
-            //}
+//            //foreach (var product in productManager.GetAllByCategryId(2))
+//            //{
+//            //    Console.WriteLine(product.ProductName);
+//            //}
 
-    }
-}
+//    }
+//}

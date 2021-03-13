@@ -16,8 +16,12 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance(); //bizim yerimize new'liyip verir. yeniki constractorda IProductService isdeyen olsa Product'i newliyp verir. API'nin Setupunun tekmillesmis versiyasi
+            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance(); //bizim yerimize new'liyip verir. yeniki constractorda IProductService isdeyen olsa Product'i newliyp verir. API'nin Setupunun tekmillesmis versiyasi //bizim yerimize new'liyip verir. yeniki constractorda IProductService isdeyen olsa Product'i newliyp verir. API'nin Setupunun tekmillesmis versiyasi
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

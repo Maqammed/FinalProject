@@ -5,9 +5,11 @@ namespace Core.Utilities.Interceptors //12.gun
 {
     public abstract class MethodInterception : MethodInterceptionBaseAttribute
     {
-        protected virtual void OnBefore(IInvocation invocation) { }
-        protected virtual void OnAfter(IInvocation invocation) { }
-        protected virtual void OnException(IInvocation invocation, System.Exception e) { }
+        //Interception == araya giren (Basladiginda, xta aldiginda, bitdiyinde zad [])
+        //invocation == bizim metodlarimiz(add,delete zad)
+        protected virtual void OnBefore(IInvocation invocation) { } //Metodun evvelinde
+        protected virtual void OnAfter(IInvocation invocation) { } //Metodun sonunda
+        protected virtual void OnException(IInvocation invocation, System.Exception e) { } //Hata verdiyinde, bunlar aspectdi. ValidationAspect'de isdediyimizin icini doldurub islediriy []. Meselen hata alanda logla
         protected virtual void OnSuccess(IInvocation invocation) { }
         public override void Intercept(IInvocation invocation)
         {
