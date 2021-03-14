@@ -1,6 +1,7 @@
 ﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants //*Constants == Sabit (Proje sabitleri)
@@ -16,5 +17,7 @@ namespace Business.Constants //*Constants == Sabit (Proje sabitleri)
 
         public static string ProductNameAlreadyExists = "Urun ismi zaten var";
         public static string CategoryLimitExists = "Categori limiti asildigi icin urun eklenemiyor";
+
+        public static string AuthorizationDenied ="Yetkiniz yok";
     }
 }

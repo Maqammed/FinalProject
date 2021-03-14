@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -27,6 +28,9 @@ namespace Business.Concrete
             _productDal = productDal;  //_productDal'da budeyqe butum komutlar var, teze eleman bun a beraber olacaq
             _categoryService = categoryService;
         }
+
+        //Asagidaki Claim()'dir. bu kodu ileden adamin bulardan birine sahip olmasi lazimdi
+        [SecuredOperation("product.add")]
 
         //ValidationAspect ctor'de type validatorType isdiyor, oda ProductValidator'du https://youtu.be/zdpPm7Q6YE0?t=3108
         [ValidationAspect(typeof(ProductValidator))] //Bu Atrubite'du, metodub basinda(OnBefore) dogrulayir
