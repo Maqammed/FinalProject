@@ -42,7 +42,7 @@ namespace WebAPI
             //services.AddSingleton<IProductService,ProductManager>(); //bizim yerimize new'liyip verir. yeniki constractorda IProductService isdeyen olsa Product'i newliyp ver
             //services.AddSingleton<IProductDal, EfProductDal>();
 
-            //(Bos)builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+            services.AddCors();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -74,6 +74,10 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.ConfigureCustomExceptionMiddleware();
+            
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyOrigin());
 
             app.UseHttpsRedirection();
 
